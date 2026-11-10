@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cecília Vai Pra Londres 🇬🇧</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f3f4f6;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+header p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.6;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:30px;
+}
+
+.filtros{
+    margin-bottom:30px;
+}
+
+.filtros input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 2px 15px rgba(0,0,0,0.12);
+}
+
+.card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:20px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.disponivel{
+    background:#2e7d32;
+}
+
+.reservado{
+    background:#ff9800;
+}
+
+.vendido{
+    background:#d32f2f;
+}
+
+h3{
+    margin-bottom:10px;
+}
+
+.descricao{
+    color:#555;
+    min-height:55px;
+}
+
+.preco{
+    color:#0d47a1;
+    font-size:36px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    margin-top:40px;
+}
+
+.acoes{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn-whats{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    padding:12px;
+    border-radius:10px;
+    transition:0.2s;
+}
+
+.btn-whats:hover{
+    opacity:0.9;
+}
+
+.renato{
+    background:#25D366;
+}
+
+.amanda{
+    background:#128C7E;
+}
+
+.hero{
+
+    position:relative;
+
+    min-height:550px;
+
+    background-image:url("img/40. Header_Cecilia.jpeg");
+
+    background-size:cover;
+    background-position:center center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+}
+
+.overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,.40),
+        rgba(0,0,0,.55)
+    );
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:10;
+
+    color:white;
+
+    max-width:900px;
+
+    padding:30px;
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    margin-bottom:20px;
+
+    font-weight:bold;
+
+}
+
+.hero h1{
+
+    font-size:4rem;
+
+    margin-bottom:20px;
+
+    text-shadow:0 3px 15px rgba(0,0,0,.4);
+
+}
+
+.hero p{
+
+    font-size:1.4rem;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+}
+
+.hero-icons{
+
+    font-size:2rem;
+    letter-spacing:8px;
+
+}
+
+@media (max-width:768px){
+
+    .hero{
+        min-height:450px;
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    .hero p{
+        font-size:1.1rem;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🇬🇧 Nova Jornada
+        </div>
+
+        <h1>Cecília Vai Pra Londres</h1>
+
+        <p>
+            Estamos realizando um sonho e nos mudando para Londres.
+            Por isso diversos itens do nosso apartamento estão procurando um novo lar.
+        </p>
+
+        <div class="hero-icons">
+            ✈️ 🇬🇧 ☕ 🚇 ❤️
+        </div>
+
+    </div>
+
+</header>
+
+<div class="container">
+<div class="container">
+
+<div class="filtros">
+<input
+type="text"
+id="busca"
+placeholder="🔍 Procurar produto..."
+>
+</div>
+
+<div id="catalogo" class="grid"></div>
+
+</div>
+
+<footer>
+Feito com ❤️ para ajudar nossos itens a encontrarem um novo lar.
+</footer>
+
+<script>
+
+const contatos = {
+
+renato: "5511998180691",
+
+amanda: "5511964741309"
+
+};
+
+const produtos = [
+
+{
+foto:"1. Berço Haus Nature.jpeg",
+nome:"Berço Haus Nature",
+preco:1500,
+status:"disponivel",
+descricao:"Berço em madeira natural premium."
+},
+
+{
+foto:"2. Comoda Haus Nature Lilibee.jpeg",
+nome:"Cômoda Haus Nature",
+preco:1250,
+status:"disponivel",
+descricao:"Cômoda com 6 gavetas."
+},
+
+{
+foto:"3. Poltrona com Puff.jpeg",
+nome:"Poltrona + Puff",
+preco:1250,
+status:"disponivel",
+descricao:"Poltrona de amamentação."
+},
+
+{
+foto:"4. TV_UN43RU7100GXZD.jpeg",
+nome:"TV Samsung 43\"",
+preco:800,
+status:"disponivel",
+descricao:"Smart TV Samsung 4K."
+},
+
+{
+foto:"5. Cadeiras_Jantar.jpeg",
+nome:"6 Cadeiras de Jantar",
+preco:420,
+status:"vendido",
+descricao:"Conjunto com 6 cadeiras."
+},
+
+{
+foto:"6. Nespresso_LatissimaOne.jpeg",
+nome:"Nespresso Lattissima One",
+preco:769,
+status:"disponivel",
+descricao:"Máquina Nespresso com leite."
+},
+
+{
+foto:"7. CervejeiraConsul.jpeg",
+nome:"Cervejeira Consul",
+preco:1493,
+status:"disponivel",
+descricao:"Cervejeira Consul Titanium."
+},
+
+{
+foto:"20. Violao.jpeg",
+nome:"Violão",
+preco:100,
+status:"disponivel",
+descricao:"Preço a definir."
+},
+
+{
+foto:"21. Faqueiro.jpeg",
+nome:"Faqueiro",
+preco:0,
+status:"disponivel",
+descricao:"Preço a definir."
+},
+
+{
+foto:"22. SofáPlenitude_2,30.jpeg",
+nome:"Sofá Plenitude 2,30m",
+preco:2500,
+status:"disponivel",
+descricao:"Sofá retrátil e reclinável."
+},
+
+{
+foto:"23. EstantelivroNuvem.jpeg",
+nome:"Estante Nuvem",
+preco:120,
+status:"disponivel",
+descricao:"Estante infantil."
+},
+
+{
+foto:"24. Triciclo.jpeg",
+nome:"Triciclo",
+preco:120,
+status:"disponivel",
+descricao:"Triciclo infantil."
+},
+
+{
+foto:"25. CarrinhoBebê.jpeg",
+nome:"Carrinho de Boneca",
+preco:60,
+status:"disponivel",
+descricao:"Carrinho infantil."
+},
+
+{
+foto:"26. Bicicleta.jpeg",
+nome:"Balance Bike",
+preco:100,
+status:"disponivel",
+descricao:"Bicicleta sem pedal."
+},
+
+{
+foto:"27. GeladeiraBrastemp.jpeg",
+nome:"Geladeira Brastemp",
+preco:3500,
+status:"vendido",
+descricao:"Geladeira Frost Free."
+},
+
+{
+foto:"28. MicroondasElectrolux.jpeg",
+nome:"Micro-ondas Electrolux",
+preco:700,
+status:"disponivel",
+descricao:"Micro-ondas espelhado."
+},
+
+{
+foto:"29. FornoBrastemp.jpeg",
+nome:"Forno Brastemp",
+preco:1800,
+status:"disponivel",
+descricao:"Forno embutido."
+},
+
+{
+foto:"30. ExaustorElectrolux.jpeg",
+nome:"Coifa Electrolux",
+preco:900,
+status:"disponivel",
+descricao:"Coifa inox."
+},
+
+{
+foto:"31. LavaSecaEcoBubble.jpeg",
+nome:"Lava e Seca Samsung",
+preco:2800,
+status:"disponivel",
+descricao:"Samsung EcoBubble."
+},
+
+{
+foto:"32. Airfryer.jpeg",
+nome:"Air Fryer",
+preco:250,
+status:"disponivel",
+descricao:"Air Fryer Philips Walita."
+},
+
+{
+foto:"33. GrillOsterBioceramic.jpeg",
+nome:"Grill Oster",
+preco:200,
+status:"disponivel",
+descricao:"Grill Oster Bioceramic."
+},
+
+{
+foto:"34. PanelaEletrica.jpeg",
+nome:"Panela Elétrica",
+preco:200,
+status:"disponivel",
+descricao:"Panela elétrica Oster."
+},
+
+{
+foto:"35. BaldesRetrateis.jpeg",
+nome:"Baldes Retráteis",
+preco:60,
+status:"disponivel",
+descricao:"Kit de baldes."
+},
+
+{
+foto:"36. Kit_Lixeiras.jpeg",
+nome:"Kit Lixeiras",
+preco:60,
+status:"disponivel",
+descricao:"Conjunto de lixeiras."
+},
+
+{
+foto:"37. CestoRoupa.jpeg",
+nome:"Cesto de Roupa",
+preco:50,
+status:"disponivel",
+descricao:"Cesto organizador."
+},
+
+{
+foto:"38. VentiladorMondial40.jpeg",
+nome:"Ventilador Mondial 40",
+preco:90,
+status:"disponivel",
+descricao:"Ventilador Super Power."
+},
+
+{
+foto:"39. Bicicleta.jpeg",
+nome:"Triciclo Unicórnio",
+preco:120,
+status:"disponivel",
+descricao:"Bicicleta infantil."
+}
+
+];
+
+function badge(status){
+
+if(status === "vendido"){
+return '<span class="badge vendido">Vendido</span>';
+}
+
+if(status === "reservado"){
+return '<span class="badge reservado">Reservado</span>';
+}
+
+return '<span class="badge disponivel">Disponível</span>';
+
+}
+
+function renderizar(){
+
+const busca =
+document.getElementById("busca")
+.value
+.toLowerCase();
+
+const html =
+produtos
+.filter(p =>
+p.nome.toLowerCase().includes(busca))
+.map(p =>
+
+`
+<div class="card">
+
+<img src="img/${p.foto}">
+
+<div class="card-body">
+
+${badge(p.status)}
+
+<h3>${p.nome}</h3>
+
+<p class="descricao">
+${p.descricao}
+</p>
+
+<div class="preco">
+R$ ${p.preco}
+</div>
+
+<div class="acoes">
+
+<a
+class="btn-whats renato"
+target="_blank"
+href="https://wa.me/${contatos.renato}?text=${encodeURIComponent(`Olá Renato! Tenho interesse em ${p.nome}`)}"
+>
+💬 Renato
+</a>
+
+<a
+class="btn-whats amanda"
+target="_blank"
+href="https://wa.me/${contatos.amanda}?text=${encodeURIComponent(`Olá Amanda! Tenho interesse em ${p.nome}`)}"
+>
+💬 Amanda
+</a>
+
+</div>
+
+</div>
+
+</div>
+`
+
+).join("");
+
+document.getElementById("catalogo").innerHTML = html;
+
+}
+
+document
+.getElementById("busca")
+.addEventListener("input",renderizar);
+
+renderizar();
+
+</script>
+
+</body>
+</html>
