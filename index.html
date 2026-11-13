@@ -255,6 +255,32 @@ footer{
 
 }
 
+.galeria{
+    display:flex;
+    flex-direction:column;
+}
+
+.miniaturas{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding:10px;
+}
+
+.miniaturas img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:8px;
+    cursor:pointer;
+    border:2px solid #ddd;
+    transition:.2s;
+}
+
+.miniaturas img:hover{
+    border-color:#0d47a1;
+}
+
 </style>
 </head>
 <body>
@@ -358,7 +384,7 @@ descricao:"Conjunto com 6 cadeiras."
 {
 foto:"6. Nespresso_LatissimaOne.jpeg",
 nome:"Nespresso Lattissima One",
-preco:769,
+preco:750,
 status:"disponivel",
 descricao:"Máquina Nespresso com leite."
 },
@@ -366,9 +392,108 @@ descricao:"Máquina Nespresso com leite."
 {
 foto:"7. CervejeiraConsul.jpeg",
 nome:"Cervejeira Consul",
-preco:1493,
+preco:1000,
 status:"disponivel",
 descricao:"Cervejeira Consul Titanium."
+},
+
+{
+foto:"8. BerçoSafetyFst_R$250.jpeg",
+nome:"Berço Safety First",
+preco:250,
+status:"disponivel",
+descricao:"Berço infantil Safety First."
+},
+
+{
+foto:"9. BrinquedoJanod - R$110.jpeg",
+nome:"Brinquedo Janod",
+preco:110,
+status:"disponivel",
+descricao:"Brinquedo educativo Janod."
+},
+
+{
+foto:"10. CanguruNUk.jpeg",
+nome:"Canguru NUK",
+preco:100,
+status:"disponivel",
+descricao:"Canguru para bebê."
+},
+
+{
+foto:"11. Casinha_R$110.jpeg",
+nome:"Casinha",
+preco:110,
+status:"disponivel",
+descricao:"Casinha infantil."
+},
+
+{
+foto:"12. Engrenagens_R$60.jpeg",
+nome:"Engrenagens",
+preco:60,
+status:"disponivel",
+descricao:"Brinquedo de engrenagens."
+},
+
+{
+foto:"13. Fazenda_R$30.jpeg",
+nome:"Fazenda",
+preco:30,
+status:"disponivel",
+descricao:"Brinquedo fazenda."
+},
+
+{
+foto:"14. Girafa_R$70.jpeg",
+nome:"Girafa",
+preco:70,
+status:"disponivel",
+descricao:"Brinquedo infantil."
+},
+
+{
+foto:"15. Lego_R$100.jpeg",
+nome:"Lego",
+preco:100,
+status:"disponivel",
+descricao:"Conjunto Lego."
+},
+
+{
+foto:"16. Lego2_R$60.jpeg",
+nome:"Lego 2",
+preco:60,
+status:"disponivel",
+descricao:"Conjunto Lego."
+},
+
+{
+foto:"17. LixeiraClingo.jpeg",
+nome:"Lixeira Clingo",
+preco:50,
+status:"disponivel",
+descricao:"Lixeira portátil."
+},
+
+{
+fotos:[
+"18. Ninho+almofadaYogi - R$290.jpeg",
+"18. Ninho+almofadaYogi2 - R$290.jpeg"
+],
+nome:"Ninho com Almofada Yogi",
+preco:290,
+status:"disponivel",
+descricao:"Ninho para bebê com almofada."
+},
+
+{
+foto:"19. Torre_R$85.jpeg",
+nome:"Torre",
+preco:85,
+status:"disponivel",
+descricao:"Brinquedo torre."
 },
 
 {
@@ -382,7 +507,7 @@ descricao:"Preço a definir."
 {
 foto:"21. Faqueiro.jpeg",
 nome:"Faqueiro",
-preco:0,
+preco:120,
 status:"disponivel",
 descricao:"Preço a definir."
 },
@@ -390,7 +515,7 @@ descricao:"Preço a definir."
 {
 foto:"22. SofáPlenitude_2,30.jpeg",
 nome:"Sofá Plenitude 2,30m",
-preco:2500,
+preco:2200,
 status:"disponivel",
 descricao:"Sofá retrátil e reclinável."
 },
@@ -446,7 +571,7 @@ descricao:"Micro-ondas espelhado."
 {
 foto:"29. FornoBrastemp.jpeg",
 nome:"Forno Brastemp",
-preco:1800,
+preco:1500,
 status:"disponivel",
 descricao:"Forno embutido."
 },
@@ -462,7 +587,7 @@ descricao:"Coifa inox."
 {
 foto:"31. LavaSecaEcoBubble.jpeg",
 nome:"Lava e Seca Samsung",
-preco:2800,
+preco:2500,
 status:"disponivel",
 descricao:"Samsung EcoBubble."
 },
@@ -478,7 +603,7 @@ descricao:"Air Fryer Philips Walita."
 {
 foto:"33. GrillOsterBioceramic.jpeg",
 nome:"Grill Oster",
-preco:200,
+preco:100,
 status:"disponivel",
 descricao:"Grill Oster Bioceramic."
 },
@@ -563,7 +688,25 @@ p.nome.toLowerCase().includes(busca))
 `
 <div class="card">
 
-<img src="img/${p.foto}">
+<div class="galeria">
+
+<img
+id="foto-${p.nome.replace(/\s+/g,'')}"
+src="img/${p.fotos ? p.fotos[0] : p.foto}"
+>
+
+${p.fotos ? `
+<div class="miniaturas">
+${p.fotos.map(f => `
+<img
+src="img/${f}"
+onclick="document.getElementById('foto-${p.nome.replace(/\s+/g,'')}').src='img/${f}'"
+>
+`).join("")}
+</div>
+` : ""}
+
+</div>
 
 <div class="card-body">
 
