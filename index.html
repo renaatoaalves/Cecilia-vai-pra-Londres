@@ -320,6 +320,16 @@ placeholder="🔍 Procurar produto..."
 >
 </div>
 
+<div style="
+    text-align:center;
+    color:#888;
+    font-size:12px;
+    margin-bottom:15px;
+    font-style:italic;
+">
+📅 Atualizado em 14/11/2026 • v1.4
+</div>
+
 <div id="catalogo" class="grid"></div>
 
 </div>
@@ -342,7 +352,7 @@ const produtos = [
 
 {
 foto:"1. Berço Haus Nature.jpeg",
-nome:"Berço Haus Nature",
+nome:"Berço Haus Nature - Lilibee",
 preco:1500,
 status:"disponivel",
 descricao:"Berço em madeira natural premium."
@@ -350,7 +360,7 @@ descricao:"Berço em madeira natural premium."
 
 {
 foto:"2. Comoda Haus Nature Lilibee.jpeg",
-nome:"Cômoda Haus Nature",
+nome:"Cômoda Haus Nature - Lilibee",
 preco:1250,
 status:"disponivel",
 descricao:"Cômoda com 6 gavetas."
@@ -359,9 +369,9 @@ descricao:"Cômoda com 6 gavetas."
 {
 foto:"3. Poltrona com Puff.jpeg",
 nome:"Poltrona + Puff",
-preco:1250,
+preco:900,
 status:"disponivel",
-descricao:"Poltrona de amamentação."
+descricao:"Poltrona de amamentação - está manchada, mas basta limpar."
 },
 
 {
@@ -384,7 +394,7 @@ descricao:"Conjunto com 6 cadeiras."
 foto:"6. Nespresso_LatissimaOne.jpeg",
 nome:"Nespresso Lattissima One",
 preco:750,
-status:"disponivel",
+status:"vendido",
 descricao:"Máquina Nespresso com leite."
 },
 
@@ -516,7 +526,7 @@ foto:"22. SofáPlenitude_2,30.jpeg",
 nome:"Sofá Plenitude 2,30m",
 preco:2200,
 status:"disponivel",
-descricao:"Sofá retrátil e reclinável."
+descricao:"Sofá retrátil e reclinável com carregador embutido."
 },
 
 {
@@ -554,7 +564,7 @@ descricao:"Bicicleta sem pedal."
 {
 foto:"27. GeladeiraBrastemp.jpeg",
 nome:"Geladeira Brastemp",
-preco:2500,
+preco:2250,
 status:"vendido",
 descricao:"Geladeira Frost Free."
 },
@@ -562,7 +572,7 @@ descricao:"Geladeira Frost Free."
 {
 foto:"28. MicroondasElectrolux.jpeg",
 nome:"Micro-ondas Electrolux",
-preco:700,
+preco:350,
 status:"disponivel",
 descricao:"Micro-ondas espelhado."
 },
@@ -570,7 +580,7 @@ descricao:"Micro-ondas espelhado."
 {
 foto:"29. FornoBrastemp.jpeg",
 nome:"Forno Brastemp",
-preco:1500,
+preco:1000,
 status:"disponivel",
 descricao:"Forno embutido."
 },
@@ -578,7 +588,7 @@ descricao:"Forno embutido."
 {
 foto:"30. ExaustorElectrolux.jpeg",
 nome:"Coifa Electrolux",
-preco:900,
+preco:650,
 status:"disponivel",
 descricao:"Coifa inox."
 },
@@ -586,7 +596,7 @@ descricao:"Coifa inox."
 {
 foto:"31. LavaSecaEcoBubble.jpeg",
 nome:"Lava e Seca Samsung",
-preco:2500,
+preco:2000,
 status:"disponivel",
 descricao:"Samsung EcoBubble."
 },
@@ -602,15 +612,15 @@ descricao:"Air Fryer Philips Walita."
 {
 foto:"33. GrillOsterBioceramic.jpeg",
 nome:"Grill Oster",
-preco:100,
+preco:70,
 status:"disponivel",
-descricao:"Grill Oster Bioceramic."
+descricao:"Grill Oster Bioceramic - ta grudando hein."
 },
 
 {
 foto:"34. PanelaEletrica.jpeg",
 nome:"Panela Elétrica",
-preco:200,
+preco:70,
 status:"disponivel",
 descricao:"Panela elétrica Oster."
 },
@@ -619,6 +629,7 @@ descricao:"Panela elétrica Oster."
 foto:"35. BaldesRetrateis.jpeg",
 nome:"Baldes Retráteis",
 preco:60,
+oculto: true,
 status:"disponivel",
 descricao:"Kit de baldes."
 },
@@ -627,6 +638,7 @@ descricao:"Kit de baldes."
 foto:"36. Kit_Lixeiras.jpeg",
 nome:"Kit Lixeiras",
 preco:60,
+oculto: true,
 status:"disponivel",
 descricao:"Conjunto de lixeiras."
 },
@@ -643,7 +655,7 @@ descricao:"Cesto organizador."
 foto:"38. VentiladorMondial40.jpeg",
 nome:"Ventilador Mondial 40",
 preco:90,
-status:"disponivel",
+status:"vendido",
 descricao:"Ventilador Super Power."
 },
 
@@ -653,7 +665,62 @@ nome:"Triciclo Unicórnio",
 preco:120,
 status:"disponivel",
 descricao:"Bicicleta infantil."
-}
+},
+
+{
+  fotos:[
+    "40. Saco de dormir_1.jpeg",
+    "40. Saco de dormir_2.jpeg"
+  ],
+  nome:"Saco de Dormir High Peak",
+  preco:150,
+  status:"disponivel",
+  descricao:"Saco de dormir."
+},
+{
+  fotos:[
+    "41. Mochilao1_1.jpeg",
+    "41. Mochilao1_2.jpeg"
+  ],
+  nome:"Mochilão Quechua 40L",
+  preco:100,
+  status:"disponivel",
+  descricao:"Mochilão cargueiro de trilha."
+},
+{
+  fotos:[
+    "42. Mochilao2_1.jpeg",
+    "42. Mochilao2_2.jpeg"
+  ],
+  nome:"Mochilão Quechua 60L",
+  preco:100,
+  status:"disponivel",
+  descricao:"Mochilão cargueiro de trilha - tem um furinho."
+},
+{
+  fotos:[
+    "43. FazendinhaMadeira1.jpeg",
+    "43. FazendinhaMadeira2.jpeg"
+  ],
+  nome:"Fazendinha de Madeira",
+  preco:60,
+  status:"disponivel",
+  descricao:"Brinquedo infantil de madeira."
+},
+{
+  foto:"44. TableGrill.jpeg",
+  nome:"Table Grill",
+  preco:250,
+  status:"disponivel",
+  descricao:"Churrasqueira a carvão de mesa."
+},
+{
+  foto:"45. BanheiraSafety1st.jpeg",
+  nome:"Banheira Safety 1st",
+  preco:180,
+  status:"disponivel",
+  descricao:"Banheira infantil."
+},
 
 ];
 
@@ -680,10 +747,11 @@ document.getElementById("busca")
 
 const html =
 produtos
-.filter(p =>
-p.nome.toLowerCase().includes(busca))
-.map(p =>
-
+  .filter(p =>
+    !p.oculto &&
+    p.nome.toLowerCase().includes(busca)
+  )
+  .map(p =>
 `
 <div class="card">
 
