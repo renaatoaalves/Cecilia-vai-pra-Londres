@@ -354,14 +354,14 @@ const produtos = [
 foto:"4. TV_UN43RU7100GXZD.jpeg",
 nome:"TV Samsung 43\"",
 preco:800,
-status:"disponivel",
+status:"vendido",
 descricao:"Smart TV Samsung 4K."
 },
 {
 foto:"7. CervejeiraConsul.jpeg",
 nome:"Cervejeira Consul",
 preco:1000,
-status:"disponivel",
+status:"vendido",
 descricao:"Cervejeira Consul Titanium."
 },
 {
@@ -421,24 +421,10 @@ status:"disponivel",
 descricao:"Bicicleta sem pedal."
 },
 {
-foto:"29. FornoBrastemp.jpeg",
-nome:"Forno Brastemp BO260AR",
-preco:1000,
-status:"disponivel",
-descricao:"Forno embutido."
-},
-{
-foto:"30. ExaustorElectrolux.jpeg",
-nome:"Coifa Electrolux 70cs",
-preco:650,
-status:"disponivel",
-descricao:"Coifa inox."
-},
-{
 foto:"33. GrillOsterBioceramic.jpeg",
 nome:"Grill Oster",
 preco:70,
-status:"disponivel",
+status:"vendido",
 descricao:"Grill Oster Bioceramic - ta grudando hein."
 },
 {
@@ -505,14 +491,14 @@ descricao:"Cesto organizador."
   foto:"44. TableGrill.jpeg",
   nome:"Table Grill",
   preco:250,
-  status:"disponivel",
+  status:"vendido",
   descricao:"Churrasqueira a carvão de mesa."
 },
 {
   foto:"45. BanheiraSafety1st.jpeg",
   nome:"Banheira Safety 1st",
   preco:180,
-  status:"disponivel",
+  status:"vendido",
   descricao:"Banheira infantil."
 },
 {
@@ -521,13 +507,6 @@ descricao:"Cesto organizador."
   preco:400,
   status:"disponivel",
   descricao:"Adega Brastemp com controle digital de temperatura, em ótimo estado."
-},
-{
-  foto:"48. MixerOster.jpeg",
-  nome:"Mixer Oster",
-  preco:80,
-  status:"disponivel",
-  descricao:"Mixer Oster em inox com copo medidor."
 },
 {
   foto:"49. MixerManual.jpeg",
@@ -571,15 +550,37 @@ descricao:"Cesto organizador."
   status:"disponivel",
   descricao:"Cafeteira Oster com programação automática e jarra de vidro - POUCO USADO."
 },
+
+// VENDIDOS
+
+{
+foto:"29. FornoBrastemp.jpeg",
+nome:"Forno Brastemp BO260AR",
+preco:1000,
+status:"vendido",
+descricao:"Forno embutido."
+},
+{
+foto:"30. ExaustorElectrolux.jpeg",
+nome:"Coifa Electrolux 70cs",
+preco:650,
+status:"vendido",
+descricao:"Coifa inox."
+},
+{
+  foto:"48. MixerOster.jpeg",
+  nome:"Mixer Philco",
+  preco:80,
+  status:"vendido",
+  descricao:"Mixer Philco em inox com copo medidor."
+},
 {
   foto:"55. LiquidificadorOsterVidro.jpeg",
   nome:"Liquidificador Oster com Jarra de Vidro",
   preco:120,
-  status:"disponivel",
+  status:"vendido",
   descricao:"Liquidificador Oster All Metal Drive com copo de vidro."
 },
-
-// VENDIDOS
 
 {
 foto:"39. Bicicleta.jpeg",
@@ -784,6 +785,11 @@ produtos
     !p.oculto &&
     p.nome.toLowerCase().includes(busca)
   )
+  .sort((a, b) => {
+    if (a.status === "vendido" && b.status !== "vendido") return 1;
+    if (a.status !== "vendido" && b.status === "vendido") return -1;
+    return 0;
+  })
   .map(p =>
 `
 <div class="card">
